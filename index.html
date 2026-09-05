@@ -1,1 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deadly Noodles & Final Minutes | Top 30 Venomous Snake Survival Countdown</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+</head>
+<body>
 
+  <!-- Emergency Medical Disclaimer Header -->
+  <aside class="emergency-banner" role="alert">
+    <div class="emergency-content">
+      <span class="pulse-dot"></span>
+      <span><strong>REAL-LIFE EMERGENCY?</strong> If you were actually bitten, <strong>STOP READING & CALL RESCUE NOW:</strong></span>
+      <span class="sos-tag">000 (AU)</span>
+      <span class="sos-tag">911 (US/CA)</span>
+      <span class="sos-tag">112 (EU/IN)</span>
+      <span class="sos-tag">999 (UK)</span>
+    </div>
+    <div class="emergency-actions">
+      <button class="first-aid-btn" id="firstAidBtn">🚑 Proper First-Aid Protocol</button>
+    </div>
+  </aside>
+
+  <!-- Main Hero Header -->
+  <header class="app-header">
+    <div class="badge-tag">💀 Top 30 Most Lethal Serpents on Planet Earth</div>
+    <h1 class="app-title">Deadly Noodles & Final Minutes</h1>
+    <p class="app-subtitle">
+      Identify the serpent that sealed your fate by color, spot, and bad decisions. Calculate your remaining minutes on Earth, and please leave us a 5-star rating before meeting your ancestors.
+    </p>
+
+    <div class="quick-mamba-bar">
+      <button class="quick-mamba-btn" id="quickMambaBtn">
+        <span>⚡ Bitten by Black Mamba! (1-Min Timer + Video)</span>
+      </button>
+      <button class="quick-mamba-btn" id="quickKingCobraBtn" style="background: linear-gradient(135deg, #15803d, #166534); border-color: #22c55e; box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);">
+        <span>⚡ Bitten by King Cobra! (1-Min Timer + Video)</span>
+      </button>
+      <button class="ctrl-btn" id="soundToggleBtn">🔊 Sound: ON</button>
+    </div>
+  </header>
+
+  <!-- Filter & Control Panel -->
+  <main class="main-container">
+    <section class="filter-panel" aria-label="Snake Identification Filters">
+      <!-- Search Input -->
+      <div class="filter-group">
+        <div class="filter-label">
+          <span>Search Database</span>
+          <span class="filter-count" id="visibleCount">Loading 30 species...</span>
+        </div>
+        <div class="search-wrapper">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            id="searchInput" 
+            class="search-input" 
+            placeholder="Search by name (e.g. Mamba, Taipan), region (Australia, Africa), venom, or symptoms..."
+            autocomplete="off"
+          >
+        </div>
+      </div>
+
+      <!-- Color Filter -->
+      <div class="filter-group">
+        <div class="filter-label">
+          <span>1. What color was the serpent?</span>
+        </div>
+        <div class="pill-row" id="colorFilterRow">
+          <button class="pill-btn active" data-color="all"><span class="color-dot dot-all"></span>All Colors</button>
+          <button class="pill-btn" data-color="black"><span class="color-dot dot-black"></span>Black / Dark</button>
+          <button class="pill-btn" data-color="brown"><span class="color-dot dot-brown"></span>Brown / Tan</button>
+          <button class="pill-btn" data-color="green"><span class="color-dot dot-green"></span>Green</button>
+          <button class="pill-btn" data-color="yellow"><span class="color-dot dot-yellow"></span>Yellow / Gold</button>
+          <button class="pill-btn" data-color="grey"><span class="color-dot dot-grey"></span>Grey / Slate</button>
+          <button class="pill-btn" data-color="banded"><span class="color-dot dot-banded"></span>Banded / Striped</button>
+        </div>
+      </div>
+
+      <!-- Spot / Habitat Filter -->
+      <div class="filter-group">
+        <div class="filter-label">
+          <span>2. Where was it spotted?</span>
+        </div>
+        <div class="spot-grid" id="spotFilterGrid">
+          <button class="spot-chip active" data-spot="all"><span>🌐</span> Anywhere</button>
+          <button class="spot-chip" data-spot="bed"><span>🛏️</span> In Bed / Indoors</button>
+          <button class="spot-chip" data-spot="tree"><span>🌳</span> In Tree / Branches</button>
+          <button class="spot-chip" data-spot="rocks"><span>🪨</span> Under Rocks / Logs</button>
+          <button class="spot-chip" data-spot="grass"><span>🌾</span> High Grass / Field</button>
+          <button class="spot-chip" data-spot="water"><span>🌊</span> Water / Swimming</button>
+          <button class="spot-chip" data-spot="desert"><span>🏜️</span> Desert Sand</button>
+        </div>
+      </div>
+
+      <!-- Sarcastic Circumstance Selector -->
+      <div class="filter-group">
+        <div class="filter-label">
+          <span>3. What circumstance led to this unfortunate event?</span>
+        </div>
+        <select class="circumstance-select" id="circumstanceSelect">
+          <option value="mind_business">"I was peacefully minding my own business."</option>
+          <option value="boop_snoot">"I tried to pet it / boop its cute little snoot."</option>
+          <option value="flip_flops">"Stepped on it in the dark while wearing flip-flops."</option>
+          <option value="picked_up_stick">"Thought it was an interesting wooden branch and picked it up."</option>
+          <option value="dropped_ceiling">"It dropped from the ceiling / tree like a ninja."</option>
+        </select>
+
+        <!-- Sarcastic Live Commentary Box -->
+        <div class="sarcastic-commentary-box">
+          <div class="sarcastic-icon">🐍</div>
+          <div class="sarcastic-text-wrapper">
+            <h4 id="sarcasticTitle">Unprovoked Encounter</h4>
+            <div class="sarcastic-comment" id="sarcasticText">
+              "Minding your own business? In snake territory, your very existence is considered a hostile geopolitical provocation."
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fixated Live Serpent Observation Deck & Video Theater -->
+    <section class="fixated-video-deck" id="fixatedVideoDeck" aria-label="Fixated Live Serpent Surveillance Feed">
+      <div class="deck-header">
+        <div class="deck-title-row">
+          <span class="pulse-dot"></span>
+          <h3 id="deckFeedTitle">🔴 LIVE SURVEILLANCE FEED: BLACK MAMBA</h3>
+        </div>
+        <div class="deck-actions-row">
+          <div class="deck-channel-pills">
+            <button class="channel-pill active" data-snake="black_mamba">⚡ Black Mamba</button>
+            <button class="channel-pill" data-snake="king_cobra">👑 King Cobra</button>
+            <button class="channel-pill" data-snake="forest_cobra">🖤 Black Cobra</button>
+            <button class="channel-pill" data-snake="afterlife">💀 Afterlife / Death</button>
+          </div>
+          <div class="deck-storage-controls">
+            <span class="permanent-badge" id="deckPermanentBadge" style="display: none;">💾 Storage Video Active</span>
+            <label class="permanent-upload-btn" title="Upload a video from your local storage — permanently saved in browser and folder!">
+              📁 Upload Video
+              <input type="file" id="deckVideoFileInput" accept="video/*" style="display: none;">
+            </label>
+            <button class="deck-reset-btn" id="deckResetVideoBtn" title="Reset this channel to default video" style="display: none;">↺ Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="deck-media-wrapper">
+        <video 
+          id="deckVideoPlayer" 
+          class="deck-video" 
+          autoplay 
+          loop 
+          muted 
+          playsinline 
+          controls
+        ></video>
+        <canvas id="deckVideoCanvas" class="deck-canvas" style="display: none;"></canvas>
+
+        <div class="deck-hud-overlay">
+          <div class="hud-top-left" id="deckHudTop">SPECIES: BLACK MAMBA • 12 MPH</div>
+          <div class="hud-bottom-right" id="deckHudBottom">STATUS: HOSTILE AGGRESSION</div>
+        </div>
+      </div>
+
+      <div class="deck-footer">
+        <p class="deck-caption" id="deckCaption">
+          "Observing Black Mamba displaying signature inky-black mouth lining. Top speed: 12 MPH. You cannot outrun this."
+        </p>
+        <button class="deck-bite-btn" id="deckBiteBtn">
+          🚨 I WAS BITTEN BY THIS SERPENT! (START SURVIVAL COUNTDOWN)
+        </button>
+      </div>
+    </section>
+
+    <!-- Snakes Grid Section -->
+    <section aria-label="Venomous Snake Results">
+      <div class="cards-header">
+        <h2 class="cards-heading">World's Most Venomous Serpents</h2>
+        <span class="cards-sub">Select the snake to start your survival countdown</span>
+      </div>
+
+      <div class="snake-grid" id="snakeGrid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- COUNTDOWN OVERLAY MODAL -->
+  <div class="modal-backdrop" id="countdownModal" role="dialog" aria-modal="true">
+    <div class="countdown-dialog">
+      <button class="close-modal-x" id="closeCountdownBtn" aria-label="Cancel Countdown">✕</button>
+      <div class="modal-header-tag" id="modalThreatBadge">🚨 BITE SURVIVAL COUNTDOWN IN PROGRESS</div>
+      <h2 class="modal-snake-title" id="modalSnakeName">Black Mamba</h2>
+      <div class="modal-snake-nick" id="modalSnakeNick">"The 12 MPH Death Train"</div>
+
+      <!-- Serpent Video Surveillance Theater (For King Cobra, Black Mamba, etc.) -->
+      <div class="cobra-video-section" id="snakeVideoSection" style="display: none;">
+        <div class="video-header-bar">
+          <span class="video-feed-tag" id="snakeVideoFeedTag">🔴 LIVE SURVEILLANCE FEED</span>
+          <div class="modal-upload-actions">
+            <span class="permanent-badge" id="snakePermanentBadge" style="display: none;">💾 Storage Video Active</span>
+            <label class="permanent-upload-btn" title="Upload a custom video for this snake from your storage — permanently saved!">
+              📁 Upload Snake Video
+              <input type="file" id="snakeVideoFileInput" accept="video/*" style="display: none;">
+            </label>
+            <button class="deck-reset-btn" id="snakeResetVideoBtn" title="Reset this snake's video to default" style="display: none;">↺ Reset</button>
+          </div>
+        </div>
+        <div class="video-player-container">
+          <video id="snakeVideoPlayer" class="modal-video-element" controls autoplay loop playsinline muted></video>
+          <canvas id="snakeVideoCanvas" class="fallback-canvas-video" style="display: none;"></canvas>
+        </div>
+        <div class="video-caption-bar" id="snakeVideoCaption">
+          "Observing subject in attack posture. Note: It is already too late."
+        </div>
+      </div>
+
+      <!-- Second Bite Advice Box (For lower-star snakes) -->
+      <div class="second-bite-banner" id="secondBiteBox" style="display: none;">
+        <div class="second-bite-icon">🐍</div>
+        <div class="second-bite-text">
+          <strong id="secondBiteTitle">⚠️ Venom Delivery Taking Too Long?</strong>
+          <p id="secondBiteText">This snake only has a 3-star rating, meaning you will survive for up to 5 minutes. If you want to speed things up, make it bite you one more time so all the poison gets released!</p>
+          <button class="second-bite-action-btn" id="secondBiteBtn">⚡ Make It Bite You Again! (Release Remaining Poison)</button>
+        </div>
+      </div>
+
+      <!-- Big Clock -->
+      <div class="clock-container">
+        <div class="clock-label">ESTIMATED TIME UNTIL AFTERLIFE</div>
+        <div class="clock-digits" id="clockDigits">01:00.00</div>
+        
+        <!-- ECG Heartbeat Line -->
+        <div class="ecg-wrapper">
+          <svg class="ecg-svg" viewBox="0 0 500 40">
+            <path class="ecg-path" d="M 0,20 L 150,20 L 165,5 L 180,35 L 195,10 L 210,25 L 220,20 L 350,20 L 365,5 L 380,35 L 395,10 L 410,25 L 420,20 L 500,20"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Timer Progress Bar -->
+      <div class="timer-bar-wrap">
+        <div class="timer-bar-fill" id="timerProgressBar"></div>
+      </div>
+
+      <!-- Live Sarcastic Stage Observation -->
+      <div class="stage-ticker-box">
+        <div class="stage-title" id="stageTitle">Survival Observation</div>
+        <div class="stage-message" id="stageMessage">"Stage 1: Mild regret and sudden interest in life insurance."</div>
+      </div>
+
+      <!-- Controls -->
+      <div class="modal-controls">
+        <button class="ctrl-btn speedrun-btn" id="speedrunTimerBtn">⏩ Speed Up (Skip to 5s)</button>
+        <button class="ctrl-btn" id="pauseTimerBtn">⏸️ Pause</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AFTERLIFE 5-STAR RATING MODAL (Grand Finale) -->
+  <div class="modal-backdrop" id="afterlifeModal" role="dialog" aria-modal="true">
+    <div class="afterlife-dialog">
+      <div class="tombstone-icon">🪦</div>
+      <h2 class="rip-title">R.I.P. IN PEACE</h2>
+      <p class="rip-subtitle">You have officially crossed the mortal threshold into the great beyond.</p>
+
+      <!-- Afterlife / Death Video Broadcast -->
+      <div class="afterlife-video-section" id="afterlifeVideoSection">
+        <div class="video-header-bar">
+          <span class="video-feed-tag afterlife-tag">🎬 MORTAL EXPIRATION BROADCAST</span>
+          <div class="modal-upload-actions">
+            <span class="permanent-badge" id="afterlifePermanentBadge" style="display: none;">💾 Storage Video Active</span>
+            <label class="permanent-upload-btn" title="Upload a custom afterlife/death video from your storage — permanently saved!">
+              📁 Upload Death Video
+              <input type="file" id="afterlifeVideoFileInput" accept="video/*" style="display: none;">
+            </label>
+            <button class="deck-reset-btn" id="afterlifeResetVideoBtn" title="Reset afterlife video to default" style="display: none;">↺ Reset</button>
+          </div>
+        </div>
+        <div class="video-player-container">
+          <video id="afterlifeVideoPlayer" class="modal-video-element" controls autoplay loop playsinline muted></video>
+          <canvas id="afterlifeVideoCanvas" class="fallback-canvas-video" style="display: none;"></canvas>
+        </div>
+        <div class="video-caption-bar">
+          "Final transmission from your earthly vessel. Streaming live to the underworld."
+        </div>
+      </div>
+
+      <div class="rating-prompt-card">
+        <div class="rating-appeal">⭐ PLEASE GIVE US A 5-STAR RATING! ⭐</div>
+        <p class="rating-appeal-desc">
+          Your soul may be departing for the ethereal plane, but our App Store ranking is eternal! Please take 3 seconds to rate us before meeting Saint Peter or Steve Irwin.
+        </p>
+
+        <!-- Star Rating Widget -->
+        <div class="star-rating-row" id="starRatingRow">
+          <button class="star-btn" data-star="1">★</button>
+          <button class="star-btn" data-star="2">★</button>
+          <button class="star-btn" data-star="3">★</button>
+          <button class="star-btn" data-star="4">★</button>
+          <button class="star-btn" data-star="5">★</button>
+        </div>
+        <div class="rating-tooltip" id="ratingTooltip">Hover any star to lock in 5 stars!</div>
+
+        <!-- Pre-filled Comedic Reviews -->
+        <select class="mock-review-select" id="mockReviewSelect">
+          <option value="10/10 timer was accurate, currently chatting with Steve Irwin.">"10/10 timer was accurate, currently chatting with Steve Irwin."</option>
+          <option value="Would definitely get bitten again just for this app UI.">"Would definitely get bitten again just for this app UI."</option>
+          <option value="Died peacefully knowing this app exists. 5 stars well deserved.">"Died peacefully knowing this app exists. 5 stars well deserved."</option>
+          <option value="Leaving 5 stars was my final earthly testament. Worth every second.">"Leaving 5 stars was my final earthly testament. Worth every second."</option>
+        </select>
+      </div>
+
+      <button class="submit-review-btn" id="submitReviewBtn">
+        🕊️ Submit 5-Star Review & Rest In Peace
+      </button>
+
+      <div>
+        <button class="respawn-btn" id="respawnBtn">
+          💉 Respawn (I Took Antivenom Just In Time)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Real First Aid Modal -->
+  <div class="modal-backdrop" id="firstAidModal" role="dialog" aria-modal="true">
+    <div class="first-aid-dialog">
+      <button class="close-modal-x" id="closeFirstAidBtn">✕</button>
+      <h3>🚨 Official Snakebite First-Aid Protocol</h3>
+      <ol class="aid-list">
+        <li><strong>Stay completely still and calm.</strong> Physical exertion pumps venom through your lymphatic system exponentially faster.</li>
+        <li><strong>Call emergency services immediately</strong> (911 / 000 / 112 / 999).</li>
+        <li><strong>Immobilize the bitten limb</strong> with a broad pressure bandage (bandage from fingers/toes up toward the body, firm as for a sprained ankle). Splint the limb so joints cannot bend.</li>
+        <li><strong>Do NOT wash the bite site.</strong> Residual venom on the skin is used by emergency hospital staff to identify the snake species and administer the exact antivenom!</li>
+        <li><strong>Keep the bite site at or below heart level.</strong></li>
+      </ol>
+      <div class="aid-donts">
+        <strong>⚠️ WHAT NOT TO DO (CINEMATIC MYTHS):</strong><br>
+        • Do NOT cut the wound.<br>
+        • Do NOT attempt to suck venom out with your mouth or suction devices.<br>
+        • Do NOT apply an arterial tourniquet (causes amputation).<br>
+        • Do NOT apply ice or electric shocks.
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Message -->
+  <div class="toast-msg" id="toastMsg"></div>
+
+  <!-- Scripts -->
+  <script src="snakes_data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
